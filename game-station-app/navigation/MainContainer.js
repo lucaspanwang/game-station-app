@@ -28,9 +28,13 @@ function MainContainer() {
             if (rn === home) {
               iconName = focused ? "home" : "home-outline";
             } else if (rn === games) {
-              iconName = focused ? "game-controller" : "game-controller-outline";
+              iconName = focused
+                ? "game-controller"
+                : "game-controller-outline";
             } else if (rn === sell) {
-              iconName = focused ? "ios-sync-circle" : "ios-sync-circle-outline";
+              iconName = focused
+                ? "ios-sync-circle"
+                : "ios-sync-circle-outline";
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;

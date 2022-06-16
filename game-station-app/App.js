@@ -1,9 +1,12 @@
-import * as React from 'react';
-import MainContainer from './navigation/MainContainer';
+import React, { useState } from "react";
+import MainContainer from "./navigation/MainContainer";
+import { ContextProvider } from "./AppStateContext";
 
 function App() {
   return (
-    <MainContainer/>
+    <ContextProvider>
+      <MainContainer />
+    </ContextProvider>
   );
 }
 
