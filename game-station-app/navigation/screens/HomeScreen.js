@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import GameCard from "../../components/GameCard";
 import { AppStateContext } from "../../AppStateContext";
 
@@ -12,8 +12,11 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <GameCard navigation={navigation} />
-      {/* <Text>{games[0].city}</Text> */}
+      <ScrollView style={styles.scrollContainer}>
+        {games.map((infor) => (
+          <GameCard key={infor._id} infor={infor} navigation={navigation} />
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -22,7 +25,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop: 20,
-    marginBottom: 20,
+  },
+  scrollContainer: {
+    width: "100%",
+    paddingTop: 15,
+    paddingBottom: 15,
   },
 });

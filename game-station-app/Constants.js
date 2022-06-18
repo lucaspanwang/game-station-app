@@ -1,29 +1,5 @@
 export let allGames = [
   {
-    _id: "6271613ec6d99c8dc53202cc",
-    title: "Final Fantasy 15, Xbox",
-    price: 20,
-    picture_urls: [
-      "https://res.cloudinary.com/gamestationca/image/upload/v1651597596/games/3max_feayk7.jpg",
-      "https://res.cloudinary.com/gamestationca/image/upload/v1651597599/games/ff15_pc_ejagyf.jpg",
-    ],
-    post_date: "2022-05-03T17:07:10.678Z",
-    condition: "Used",
-    platform: "Xbox One",
-    city: "Richmond",
-    postal_code: "V7C 0A4",
-    description: "Great JRPG you cannot miss",
-    status: "Selling",
-    seller: {
-      _id: "624a6586be9b3f0070b96110",
-      user_name: "lucas@test.com",
-      __v: 0,
-      avatar_url:
-        "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
-    },
-    __v: 0,
-  },
-  {
     _id: "62704abb9a973391bbb8a0eb",
     title: "13 Sentinels",
     price: 50,
