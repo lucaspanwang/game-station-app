@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, Button, Image, StyleSheet, TextInput, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Button, Image, StyleSheet, TextInput, ScrollView, TouchableOpacity, Alert } from "react-native";
 import { Picker } from '@react-native-picker/picker';
 import { AppStateContext } from "../../AppStateContext";
 import * as ImagePicker from 'expo-image-picker';
@@ -11,13 +11,15 @@ export default function SellScreen({ navigation }) {
     const { games, setGames } = useContext(AppStateContext);
 
     const [gameObj, setgameObj] = useState({
+        _id: null,
         picture_urls: [null],
         title: null,
         platform: 'PlayStation 4',
+        status: "Selling",
         postal_code: null,
         price: null,
         description: null,
-        post_date: "2022-06-18T21:18:51.818Z",
+        post_date: "2022-06-21T18:18:51.818Z",
         seller: {
             user_name: null,
             email: null,
@@ -56,9 +58,9 @@ export default function SellScreen({ navigation }) {
         <View style={styles.container}>
             <ScrollView style={styles.scrollContainer}>
                 <View style={{ alignItems: "center" }}>
-                    <Text
+                    {/* <Text
                         onPress={() => navigation.navigate('Home')}
-                        style={{ fontSize: 26, fontWeight: 'bold' }}>Sell Screen</Text>
+                        style={{ fontSize: 26, fontWeight: 'bold' }}>Sell Screen</Text> */}
 
                     {gameObj.picture_urls[0] && <Image source={{
                         uri: gameObj.picture_urls[0]
@@ -203,10 +205,30 @@ export default function SellScreen({ navigation }) {
                         />
                     </Picker>
 
-                    <Text>{JSON.stringify(gameObj)}</Text>
                     <TouchableOpacity
                         style={styles.bubble}
-                        onPress={() => setGames([gameObj, ...games])}
+                        onPress={() => {
+                            if (gameObj.price == null || gameObj.seller.user_name == null || gameObj.seller.password == null || gameObj.seller.email == null
+                                || gameObj.title == null || gameObj.postal_code == null || gameObj.description == null || gameObj.picture_urls[0] == null) {
+                                Alert.alert("Notice", "Please confirm all infos are written", [
+                                    { text: "OK", onPress: () => console.log("You agreed") },
+                                ]);
+                            } else {
+                                setgameObj((prev) => ({
+                                    ...prev,
+                                    _id: Math.floor(Math.random() * 10000000).toString(),
+                                }));
+
+                                setGames([gameObj, ...games]);
+
+                                Alert.alert("Notice", "Submitted Successfully", [
+                                    { text: "OK", onPress: () => console.log("You agreed") },
+                                ]);
+                            }
+
+
+                        }
+                        }
                     >
                         <Text style={styles.buttonText}>SUMBIT</Text>
                     </TouchableOpacity>
