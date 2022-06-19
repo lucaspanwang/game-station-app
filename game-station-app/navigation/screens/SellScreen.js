@@ -7,6 +7,9 @@ import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 
 export default function SellScreen({ navigation }) {
+
+    const { games, setGames } = useContext(AppStateContext);
+
     const [gameObj, setgameObj] = useState({
         picture_urls: [null],
         title: null,
@@ -14,6 +17,7 @@ export default function SellScreen({ navigation }) {
         postal_code: null,
         price: null,
         description: null,
+        post_date: "2022-06-18T21:18:51.818Z",
         seller: {
             user_name: null,
             email: null,
@@ -200,13 +204,12 @@ export default function SellScreen({ navigation }) {
                     </Picker>
 
                     <Text>{JSON.stringify(gameObj)}</Text>
-                    <TouchableOpacity style={styles.bubble}
+                    <TouchableOpacity
+                        style={styles.bubble}
+                        onPress={setGames(games.slice(1, 5))}
                     >
                         <Text style={styles.buttonText}>SUMBIT</Text>
                     </TouchableOpacity>
-                    <Text> </Text>
-                    <Text> </Text>
-                    <Text> </Text>
                 </View>
             </ScrollView>
         </View>
@@ -251,6 +254,7 @@ const styles = StyleSheet.create({
         paddingTop: 13,
         paddingBottom: 13,
         borderRadius: 6,
+        marginBottom: 30,
         width: '70%',
     },
 
