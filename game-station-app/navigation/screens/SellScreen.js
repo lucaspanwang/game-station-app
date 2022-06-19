@@ -206,7 +206,7 @@ export default function SellScreen({ navigation }) {
                     <Text>{JSON.stringify(gameObj)}</Text>
                     <TouchableOpacity
                         style={styles.bubble}
-                        onPress={setGames(games.slice(1, 5))}
+                        onPress={() => setGames([gameObj, ...games])}
                     >
                         <Text style={styles.buttonText}>SUMBIT</Text>
                     </TouchableOpacity>
