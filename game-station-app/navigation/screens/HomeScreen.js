@@ -15,15 +15,20 @@ export default function HomeScreen({ navigation }) {
   const [nsGames, setNsGames] = useState([]);
 
   useEffect(() => {
-    setPicks(games.slice(0, 3));
+    let sellingGames = games.filter((game) => game.status === "Selling");
+    setPicks(sellingGames.slice(0, 3));
     setPsGames(
-      games.filter((game) => game.platform.includes("PlayStation")).slice(0, 3)
+      sellingGames
+        .filter((game) => game.platform.includes("PlayStation"))
+        .slice(0, 3)
     );
     setXboxGames(
-      games.filter((game) => game.platform.includes("Xbox")).slice(0, 3)
+      sellingGames.filter((game) => game.platform.includes("Xbox")).slice(0, 3)
     );
     setNsGames(
-      games.filter((game) => game.platform.includes("Switch")).slice(0, 3)
+      sellingGames
+        .filter((game) => game.platform.includes("Switch"))
+        .slice(0, 3)
     );
   }, [games]);
 

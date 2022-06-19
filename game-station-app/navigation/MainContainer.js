@@ -1,50 +1,27 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-// Screens
-import HomeScreen from "./screens/HomeScreen";
-import gamesScreen from "./screens/GamesScreen";
-import SellScreen from "./screens/SellScreen";
+const Stack = createNativeStackNavigator();
 
-//Screen names
-const home = "Home";
-const games = "Games";
-const sell = "Sell";
-
-const Tab = createBottomTabNavigator();
+import { TabNavigator } from "./TabNavigator";
+import DetailsScreen from "./screens/DetailsScreen";
 
 function MainContainer() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName={home}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            let rn = route.name;
-
-            if (rn === home) {
-              iconName = focused ? "home" : "home-outline";
-            } else if (rn === games) {
-              iconName = focused
-                ? "game-controller"
-                : "game-controller-outline";
-            } else if (rn === sell) {
-              iconName = focused
-                ? "ios-sync-circle"
-                : "ios-sync-circle-outline";
-            }
-
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
       >
-        <Tab.Screen name={home} component={HomeScreen} />
-        <Tab.Screen name={games} component={gamesScreen} />
-        <Tab.Screen name={sell} component={SellScreen} />
-      </Tab.Navigator>
+        <Stack.Group>
+          <Stack.Screen name="main" component={TabNavigator} />
+        </Stack.Group>
+        <Stack.Group screenOptions={{ presentation: "modal" }}>
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Group>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

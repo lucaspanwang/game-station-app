@@ -10,7 +10,14 @@ export default function GameCard({ infor, navigation }) {
         <Text>{infor.post_date.slice(0, 10)}</Text>
         <Text>Postal Code: {infor.postal_code}</Text>
         <Text>Price: C${infor.price}</Text>
-        <TouchableOpacity style={styles.bubble}>
+        <TouchableOpacity
+          style={styles.bubble}
+          onPress={() => {
+            navigation.navigate("Details", {
+              infor,
+            });
+          }}
+        >
           <Text style={styles.buttonText}>DETAILS</Text>
         </TouchableOpacity>
       </View>
