@@ -107,7 +107,7 @@ export default function GameScreen({ navigation }) {
           break;
         case "30-60":
           sellingGames = sellingGames.filter(
-            (game) => games.price >= 30 && game.price < 60
+            (game) => game.price >= 30 && game.price < 60
           );
           break;
         case "60+":
