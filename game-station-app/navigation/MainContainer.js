@@ -6,6 +6,7 @@ const Stack = createNativeStackNavigator();
 
 import { TabNavigator } from "./TabNavigator";
 import DetailsScreen from "./screens/DetailsScreen";
+import EditScreen from "./screens/EditScreen";
 
 function MainContainer() {
   return (
@@ -20,6 +21,7 @@ function MainContainer() {
         </Stack.Group>
         <Stack.Group screenOptions={{ presentation: "modal" }}>
           <Stack.Screen name="Details" component={DetailsScreen} />
+          <Stack.Screen name="Edit" component={EditScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
