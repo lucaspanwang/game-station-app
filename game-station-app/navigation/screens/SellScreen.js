@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, Button, Image, StyleSheet, TextInput, ScrollView } from "react-native";
+import { View, Text, Button, Image, StyleSheet, TextInput, ScrollView, TouchableOpacity } from "react-native";
+import { Picker } from '@react-native-picker/picker';
 import { AppStateContext } from "../../AppStateContext";
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
@@ -7,8 +8,9 @@ import Constants from 'expo-constants';
 
 export default function SellScreen({ navigation }) {
     const [gameObj, setgameObj] = useState({
-        picture_urls: null,
+        picture_urls: [null],
         title: null,
+        platform: 'PlayStation 4',
         postal_code: null,
         price: null,
         description: null,
@@ -41,125 +43,188 @@ export default function SellScreen({ navigation }) {
         if (!result.cancelled) {
             setgameObj((prev) => ({
                 ...prev,
-                picture_urls: result.uri,
+                picture_urls: [result.uri],
             }));
         }
     }
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={styles.container}>
             <ScrollView style={styles.scrollContainer}>
-                <Text
-                    onPress={() => navigation.navigate('Home')}
-                    style={{ fontSize: 26, fontWeight: 'bold' }}>Sell Screen</Text>
+                <View style={{ alignItems: "center" }}>
+                    <Text
+                        onPress={() => navigation.navigate('Home')}
+                        style={{ fontSize: 26, fontWeight: 'bold' }}>Sell Screen</Text>
 
+                    {gameObj.picture_urls[0] && <Image source={{
+                        uri: gameObj.picture_urls[0]
+                    }} style={{
+                        width: 200,
+                        height: 200,
+                    }} />}
+                    <Button
+                        title={gameObj.picture_urls[0] ? "Change to another image" : "Pick an image from album"}
+                        onPress={_pickImage}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                title: val,
+                            }));
+                        }
+                        }
+                        value={gameObj.title}
+                        placeholder="Product Title*"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                description: val,
+                            }));
+                        }
+                        }
+                        value={gameObj.description}
+                        placeholder="Product Description*"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                seller: {
+                                    ...prev.seller,
+                                    user_name: val,
+                                },
+                            }));
+                        }
+                        }
+                        value={gameObj.seller.user_name}
+                        placeholder="Your Nick Name*"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                seller: {
+                                    ...prev.seller,
+                                    email: val,
+                                }
+                            }));
+                        }
+                        }
+                        value={gameObj.seller.email}
+                        placeholder="Your Contact Email*"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                seller: {
+                                    ...prev.seller,
+                                    password: val,
+                                }
+                            }));
+                        }
+                        }
+                        value={gameObj.seller.password}
+                        placeholder="Password For Editing*"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                price: val,
+                            }));
+                        }
+                        }
+                        value={gameObj.price}
+                        placeholder="Price*"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => {
+                            setgameObj((prev) => ({
+                                ...prev,
+                                postal_code: val,
+                            }));
+                        }
+                        }
+                        value={gameObj.postal_code}
+                        placeholder="Postal Code*"
+                    />
+                    <Text style={{
+                        marginTop: 10,
+                        textAlign: "center",
+                        color: "gray",
+                    }}>
+                        Choose The Game Platform*
+                    </Text>
+                    <Picker
+                        selectedValue={gameObj.platform}
 
+                        style={{
+                            width: '70%'
+                        }}
+                        onValueChange={
+                            (itemValue, itemIndex) => {
+                                setgameObj((prev) => ({
+                                    ...prev,
+                                    platform: itemValue,
+                                }));
+                            }
+                        }
+                    >
+                        <Picker.Item
+                            label="PlayStation 4"
+                            value="PlayStation 4"
+                        />
+                        <Picker.Item
+                            label="PlayStation 5"
+                            value="PlayStation 5"
+                        />
+                        <Picker.Item
+                            label="Xbox Series X|S"
+                            value="Xbox Series X|S"
+                        />
+                        <Picker.Item
+                            label="Nintendo Switch"
+                            value="Nintendo Switch"
+                        />
+                    </Picker>
 
-                {gameObj.picture_urls && <Image source={{
-                    uri: gameObj.picture_urls
-                }} style={{
-                    width: 200,
-                    height: 200
-                }} />}
-                <Button
-                    title={gameObj.picture_urls ? "Change to other image" : "Pick an image from album"}
-                    onPress={_pickImage}
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            title: val,
-                        }));
-                    }
-                    }
-                    value={gameObj.title}
-                    placeholder="Product Title*"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            description: val,
-                        }));
-                    }
-                    }
-                    value={gameObj.description}
-                    placeholder="Product Description*"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            seller: {
-                                user_name: val,
-                            },
-                        }));
-                    }
-                    }
-                    value={gameObj.seller.user_name}
-                    placeholder="Your Nick Name*"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            price: val,
-                        }));
-                    }
-                    }
-                    value={gameObj.price}
-                    placeholder="Your Contact Email*"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            price: val,
-                        }));
-                    }
-                    }
-                    value={gameObj.price}
-                    placeholder="Password For Editing(Please Remember It)*"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            price: val,
-                        }));
-                    }
-                    }
-                    value={gameObj.price}
-                    placeholder="Price*"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={(val) => {
-                        setgameObj((prev) => ({
-                            ...prev,
-                            postal_code: val,
-                        }));
-                    }
-                    }
-                    value={gameObj.postal_code}
-                    placeholder="Postal Code*"
-                />
+                    <Text>{JSON.stringify(gameObj)}</Text>
+                    <TouchableOpacity style={styles.bubble}
+                    >
+                        <Text style={styles.buttonText}>SUMBIT</Text>
+                    </TouchableOpacity>
+                    <Text> </Text>
+                    <Text> </Text>
+                    <Text> </Text>
+                </View>
             </ScrollView>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+    },
+    scrollContainer: {
+        width: "100%",
+        paddingTop: 15,
+        paddingBottom: 15,
+    },
     input: {
         height: 40,
-        width: 200,
         margin: 12,
         borderWidth: 1,
         borderColor: 'gray',
@@ -173,12 +238,26 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+        width: '80%',
     },
     scrollContainer: {
         width: "100%",
         paddingTop: 15,
         paddingBottom: 15,
         textAlign: 'center',
+    },
+    bubble: {
+        backgroundColor: "rgba(30,30,240,0.7)",
+        paddingTop: 13,
+        paddingBottom: 13,
+        borderRadius: 6,
+        width: '70%',
+    },
+
+    buttonText: {
+        textAlign: "center",
+        color: "white",
+        fontWeight: "bold",
     },
 
 });
