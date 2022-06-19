@@ -5,6 +5,7 @@ import { AppStateContext } from "../../AppStateContext";
 import SearchBar from "react-native-dynamic-search-bar";
 import DropDownPicker from "react-native-dropdown-picker";
 import {
+  Ionicons,
   FontAwesome5,
   MaterialCommunityIcons,
 } from "react-native-vector-icons";
@@ -17,14 +18,42 @@ export default function GameScreen({ navigation }) {
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
     {
-      label: "Apple",
-      value: "apple",
-      icon: () => <FontAwesome5 name="fire-alt" size={22} color="red" />,
+      label: "All",
+      value: "all",
+      icon: () => <Ionicons name="game-controller" size={25} color="#333333" />,
+      containerStyle: styles.dropDownItem,
     },
     {
-      label: "Banana",
-      value: "banana",
-      icon: () => <FontAwesome5 name="fire-alt" size={22} color="red" />,
+      label: "PlayStation 5",
+      value: "PlayStation 5",
+      icon: () => <FontAwesome5 name="playstation" size={22} color="blue" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "PlayStation 4",
+      value: "PlayStation 4",
+      icon: () => <FontAwesome5 name="playstation" size={22} color="blue" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "Xbox Series X|S",
+      value: "Xbox Series X|S",
+      icon: () => <FontAwesome5 name="xbox" size={22} color="green" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "Xbox One",
+      value: "Xbox One",
+      icon: () => <FontAwesome5 name="xbox" size={22} color="green" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "Nintendo Switch",
+      value: "Nintendo Switch",
+      icon: () => (
+        <MaterialCommunityIcons name="nintendo-switch" size={25} color="red" />
+      ),
+      containerStyle: styles.dropDownItem,
     },
   ]);
 
@@ -35,6 +64,11 @@ export default function GameScreen({ navigation }) {
       sellingGames = sellingGames.filter((game) =>
         game.title.toUpperCase().includes(upperCasedKeywords)
       );
+    }
+    if (value) {
+      if (value !== "all") {
+        sellingGames = sellingGames.filter((game) => game.platform === value);
+      }
     }
     setFilteredGames(sellingGames);
   };
@@ -68,18 +102,11 @@ export default function GameScreen({ navigation }) {
         setValue={setValue}
         setItems={setItems}
         placeholder="Platform"
-        style={{
-          marginLeft: "9%",
-          width: "82%",
-          marginTop: 10,
-          borderWidth: 0,
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
-          shadowOpacity: 0.15,
-          shadowRadius: 3.84,
-          elevation: 5,
+        style={styles.dropDown}
+        dropDownContainerStyle={styles.dropDownBox}
+        multiple={false}
+        onChangeValue={() => {
+          filter();
         }}
       />
       <ScrollView style={styles.scrollContainer}>
@@ -110,7 +137,30 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: "82%",
-    height: 40,
+    height: 50,
     marginTop: 20,
+    borderRadius: 10,
+  },
+  dropDown: {
+    marginLeft: "9%",
+    width: "82%",
+    marginTop: 10,
+    borderWidth: 0,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  dropDownBox: {
+    marginLeft: "9%",
+    width: "80%",
+    borderWidth: 0,
+  },
+  dropDownItem: {
+    borderBottomWidth: 2,
+    borderColor: "#dddddd",
   },
 });
