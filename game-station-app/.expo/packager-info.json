@@ -1,10 +1,10 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://fz-sjt.anonymous.game-station-app.exp.direct",
+  "packagerNgrokUrl": "https://fz-sjt.anonymous.game-station-app.exp.direct",
+  "ngrokPid": 18477,
   "webpackServerPort": null,
   "devToolsPort": 19002
 }

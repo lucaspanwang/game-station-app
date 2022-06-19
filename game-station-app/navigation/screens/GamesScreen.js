@@ -56,6 +56,34 @@ export default function GameScreen({ navigation }) {
       containerStyle: styles.dropDownItem,
     },
   ]);
+  const [open2, setOpen2] = useState(false);
+  const [value2, setValue2] = useState(null);
+  const [items2, setItems2] = useState([
+    {
+      label: "All",
+      value: "all",
+      icon: () => <FontAwesome5 name="dollar-sign" size={25} color="#333333" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "0 - 30",
+      value: "0-30",
+      icon: () => <FontAwesome5 name="dollar-sign" size={25} color="orange" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "30 - 60",
+      value: "30-60",
+      icon: () => <FontAwesome5 name="dollar-sign" size={25} color="red" />,
+      containerStyle: styles.dropDownItem,
+    },
+    {
+      label: "60 +",
+      value: "60+",
+      icon: () => <FontAwesome5 name="dollar-sign" size={25} color="purple" />,
+      containerStyle: styles.dropDownItem,
+    },
+  ]);
 
   const filter = (keywordsNow = keywords) => {
     let sellingGames = games.filter((game) => game.status === "Selling");
@@ -68,6 +96,24 @@ export default function GameScreen({ navigation }) {
     if (value) {
       if (value !== "all") {
         sellingGames = sellingGames.filter((game) => game.platform === value);
+      }
+    }
+    if (value2) {
+      switch (value2) {
+        case "all":
+          break;
+        case "0-30":
+          sellingGames = sellingGames.filter((game) => game.price < 30);
+          break;
+        case "30-60":
+          sellingGames = sellingGames.filter(
+            (game) => games.price >= 30 && game.price < 60
+          );
+          break;
+        case "60+":
+          sellingGames = sellingGames.filter((game) => game.price >= 60);
+        default:
+          break;
       }
     }
     setFilteredGames(sellingGames);
@@ -104,7 +150,22 @@ export default function GameScreen({ navigation }) {
         placeholder="Platform"
         style={styles.dropDown}
         dropDownContainerStyle={styles.dropDownBox}
-        multiple={false}
+        onChangeValue={() => {
+          filter();
+        }}
+        zIndex={10000}
+        zIndexInverse={10000}
+      />
+      <DropDownPicker
+        open={open2}
+        value={value2}
+        items={items2}
+        setOpen={setOpen2}
+        setValue={setValue2}
+        setItems={setItems2}
+        placeholder="Price"
+        style={styles.dropDown}
+        dropDownContainerStyle={styles.dropDownBox}
         onChangeValue={() => {
           filter();
         }}
