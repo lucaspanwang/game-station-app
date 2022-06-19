@@ -14,7 +14,15 @@ export default function DetailsScreen(props) {
 
   return (
     <View>
-      <Text></Text>
+      <Image
+        source={{
+          uri: infor.picture_urls[0],
+        }}
+        style={{
+          width: '100%',
+          height: 400,
+        }}
+      />
       <Text>{infor.title}</Text>
       <Button
         title="EDIT"
