@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
+  TextInput,
   StyleSheet,
   Image,
   TouchableOpacity,
@@ -11,6 +12,7 @@ import {
 export default function DetailsScreen(props) {
   let infor = props.route.params.infor;
   const navigation = props.navigation;
+  const [password, setPassword] = useState('');
 
   return (
     <View>
@@ -48,14 +50,85 @@ export default function DetailsScreen(props) {
           }}
         />
       </View>
-
-      <Text>{infor.title}</Text>
-      <Button
-        title="EDIT"
-        onPress={() => {
-          navigation.navigate("Edit");
-        }}
-      />
+      <View style={{
+        marginLeft: 10,
+        marginTop: 10
+      }}>
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 40,
+            fontWeight: 'bold',
+            textShadowColor: '#C0C0C0',
+          }}
+        >{infor.title}</Text>
+        <Text
+          style={styles.text}
+        > C$ {infor.price}</Text>
+        <Text style={styles.text}> Platform: {infor.platform}</Text>
+        <Text style={styles.text}> Seller Name: {infor.seller.user_name}</Text>
+        <Text style={styles.text}> Seller Email: {infor.seller.email}</Text>
+        <Text style={styles.text}> Post Date: {infor.postal_code}</Text>
+        <Text style={styles.text}> Post Date: {infor.post_date.slice(0, 10)}</Text>
+        <TextInput
+          style={styles.input}
+          secureTextEntry={true}
+          onChangeText={(val) => {
+            setPassword(val);
+          }}
+          value={password}
+          placeholder="Password For Edit*"
+        />
+        <Button
+          title="EDIT"
+          onPress={() => {
+            navigation.navigate("Edit");
+          }}
+        />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+  },
+  scrollContainer: {
+    width: "100%",
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    backgroundColor: "white",
+    borderColor: "white",
+    padding: 10,
+    borderRadius: 8,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: "80%",
+  },
+  scrollContainer: {
+    width: "100%",
+    paddingTop: 15,
+    paddingBottom: 15,
+    textAlign: "center",
+  },
+
+  text: {
+    color: 'black',
+    fontSize: 20,
+    textShadowColor: '#C0C0C0',
+  },
+});
+
