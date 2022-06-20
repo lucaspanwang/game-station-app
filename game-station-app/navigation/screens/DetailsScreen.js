@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Button,
+  Alert,
 } from "react-native";
 
 export default function DetailsScreen(props) {
@@ -63,13 +64,14 @@ export default function DetailsScreen(props) {
           }}
         >{infor.title}</Text>
         <Text
-          style={styles.text}
+          style={styles.price}
         > C$ {infor.price}</Text>
         <Text style={styles.text}> Platform: {infor.platform}</Text>
         <Text style={styles.text}> Seller Name: {infor.seller.user_name}</Text>
         <Text style={styles.text}> Seller Email: {infor.seller.email}</Text>
-        <Text style={styles.text}> Post Date: {infor.postal_code}</Text>
+        <Text style={styles.text}> Postal Code: {infor.postal_code}</Text>
         <Text style={styles.text}> Post Date: {infor.post_date.slice(0, 10)}</Text>
+        <Text style={styles.text}> </Text>
         <TextInput
           style={styles.input}
           secureTextEntry={true}
@@ -82,7 +84,14 @@ export default function DetailsScreen(props) {
         <Button
           title="EDIT"
           onPress={() => {
-            navigation.navigate("Edit");
+            if (password === infor.seller.password) {
+              navigation.navigate("Edit", { infor });
+            } else {
+              Alert.alert("Notice", "Wrong Password", [
+                { text: "OK", onPress: () => console.log("You agreed") },
+              ]);
+            }
+
           }}
         />
       </View>
@@ -102,7 +111,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    margin: 12,
+    margin: 0,
     borderWidth: 1,
     backgroundColor: "white",
     borderColor: "white",
@@ -125,9 +134,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  text: {
+  price: {
     color: 'black',
     fontSize: 20,
+  },
+
+  text: {
+    color: 'black',
+    fontSize: 15,
     textShadowColor: '#C0C0C0',
   },
 });

@@ -18,6 +18,7 @@ export let allGames = [
       _id: "624a27de301c56006a914078",
       email: 'test@gmail.com',
       user_name: "clem",
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1651528796/games/69EDC18CBB8A6D30EA4FAD63C02D65B1_rzbarr.jpg",
@@ -43,6 +44,7 @@ export let allGames = [
     seller: {
       _id: "112940385088701518482000",
       user_name: "Pan Wang",
+      password: 'abc',
       email: 'test@gmail.com',
       avatar_url:
         "https://lh3.googleusercontent.com/a/AATXAJxcCuiS9MzVEAuw3HZQy7hT-OtoNSLbvQzGOPVW=s96-c",
@@ -69,6 +71,7 @@ export let allGames = [
       user_name: "clem",
       email: 'test@gmail.com',
       __v: 0,
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1651528796/games/69EDC18CBB8A6D30EA4FAD63C02D65B1_rzbarr.jpg",
     },
@@ -94,6 +97,7 @@ export let allGames = [
       _id: "624a6586be9b3f0070b96110",
       user_name: "lucas@test.com",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
@@ -121,6 +125,7 @@ export let allGames = [
       user_name: "Lin Li",
       email: 'test@gmail.com',
       __v: 0,
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649974487/games/avatar-icon-images-4_klmt9j.png",
     },
@@ -146,6 +151,7 @@ export let allGames = [
       _id: "624a6586be9b3f0070b96110",
       user_name: "lucas@test.com",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
@@ -170,6 +176,7 @@ export let allGames = [
       _id: "116162494425917844100000",
       user_name: "peter sun",
       email: 'test@gmail.com',
+      password: 'abc',
       avatar_url:
         "https://lh3.googleusercontent.com/a/AATXAJzTCvIQwlgLwQyrsZ2PgZ_yXUNegg49Eck60YQJ=s96-c",
       __v: 0,
@@ -194,6 +201,7 @@ export let allGames = [
       _id: "624a6586be9b3f0070b96110",
       user_name: "lucas@test.com",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
@@ -219,6 +227,7 @@ export let allGames = [
       user_name: "lucas@test.com",
       __v: 0,
       email: 'test@gmail.com',
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
     },
@@ -242,6 +251,7 @@ export let allGames = [
       _id: "624a6586be9b3f0070b96110",
       user_name: "lucas@test.com",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
@@ -267,6 +277,7 @@ export let allGames = [
       user_name: "Lin Li",
       email: 'test@gmail.com',
       __v: 0,
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649974487/games/avatar-icon-images-4_klmt9j.png",
     },
@@ -290,6 +301,7 @@ export let allGames = [
       _id: "103038299971966987559000",
       email: 'test@gmail.com',
       user_name: "Lin Li",
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649974487/games/avatar-icon-images-4_klmt9j.png",
@@ -314,6 +326,7 @@ export let allGames = [
       _id: "103038299971966987559000",
       user_name: "Lin Li",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649974487/games/avatar-icon-images-4_klmt9j.png",
@@ -339,6 +352,7 @@ export let allGames = [
       user_name: "lucas@test.com",
       __v: 0,
       email: 'test@gmail.com',
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
     },
@@ -363,6 +377,7 @@ export let allGames = [
       user_name: "Lin Li",
       __v: 0,
       email: 'test@gmail.com',
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649974487/games/avatar-icon-images-4_klmt9j.png",
     },
@@ -386,6 +401,7 @@ export let allGames = [
       _id: "624a27de301c56006a914078",
       email: 'test@gmail.com',
       user_name: "clem",
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1651528796/games/69EDC18CBB8A6D30EA4FAD63C02D65B1_rzbarr.jpg",
@@ -411,6 +427,7 @@ export let allGames = [
       user_name: "clem",
       __v: 0,
       email: 'test@gmail.com',
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1651528796/games/69EDC18CBB8A6D30EA4FAD63C02D65B1_rzbarr.jpg",
     },
@@ -434,6 +451,7 @@ export let allGames = [
       _id: "6250d759509b1a0069931667",
       email: 'test@gmail.com',
       user_name: "790494168@qq.com",
+      password: 'abc',
       avatar_url:
         "https://s.gravatar.com/avatar/f4139221fa7c156aaf3860b22519307a?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2F79.png",
       __v: 0,
@@ -458,6 +476,7 @@ export let allGames = [
       _id: "103038299971966987559000",
       user_name: "Lin Li",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649974487/games/avatar-icon-images-4_klmt9j.png",
@@ -482,6 +501,7 @@ export let allGames = [
       user_name: "lucas@test.com",
       __v: 0,
       email: 'test@gmail.com',
+      password: 'abc',
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
     },
@@ -504,6 +524,7 @@ export let allGames = [
       _id: "624a6586be9b3f0070b96110",
       user_name: "lucas@test.com",
       email: 'test@gmail.com',
+      password: 'abc',
       __v: 0,
       avatar_url:
         "https://res.cloudinary.com/drextjznd/image/upload/v1649832808/games/02F95EAB-B293-4510-A8EE-BBEFFA3D1BE5-20783-00000CDC42C7AAAA_z6ojni.jpg",
