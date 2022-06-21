@@ -40,6 +40,7 @@ export default function EditScreen(props) {
 
   return (
     <View style={styles.container}>
+      <Text></Text>
       <ScrollView style={styles.scrollContainer}>
         <View style={{ alignItems: "center" }}>
           <Text
@@ -245,7 +246,6 @@ export default function EditScreen(props) {
           <Text> </Text>
           <Text> </Text>
           <Text> </Text>
-
         </View>
       </ScrollView>
     </View>
